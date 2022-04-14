@@ -1,15 +1,26 @@
 package helloJpa;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(name = "name", nullable = false)
+    private String username;
+
+    public Member() {
+
+    }
 
     public Long getId() {
         return id;
@@ -19,13 +30,12 @@ public class Member {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
 
 }
